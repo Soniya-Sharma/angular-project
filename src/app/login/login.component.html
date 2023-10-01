@@ -1,0 +1,21 @@
+
+
+<form class="example-form" style="margin: 20px;" *ngIf="!show">
+<mat-form-field class="example-full-width" appearance="fill">
+<mat-label>User Name</mat-label>
+<input matInput placeholder="Enter your name" name="usename"
+[(ngModel)] ="username">
+</mat-form-field> &nbsp;
+<mat-form-field class="example-full-width" appearance="fill">
+<mat-label>Password</mat-label>
+<input matInput placeholder="Enter your password" value="" autocomplete="on" name="password" type="password" [(ngModel)]= "password">
+</mat-form-field>  &nbsp;
+<button mat-raised-button color="primary" (click)="submit()">LOGIN</button>
+<span *ngIf="show"> <button mat-button color="accent">Login success !!</button></span>
+&nbsp;
+
+<span *ngIf="show2"> <button mat-button color="accent">Enter correct Crenditials</button></span>
+</form>
+
+<button *ngIf="show" mat-raised-button color="primary" (click)="logout()" >LOGOUT</button><br>
+<span *ngIf="show"><app-orderreport></app-orderreport></span>

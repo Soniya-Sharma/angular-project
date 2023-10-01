@@ -1,0 +1,29 @@
+
+<marquee behavior="" direction="left"><h1 class="headone" routerLink="/home"><mat-icon>favorite</mat-icon> Enjoy Free Delivery <mat-icon>favorite</mat-icon></h1>
+</marquee>
+<marquee direction="sliding" direction="right">
+    <mat-icon>copyright</mat-icon> Soniya Sharma * soniya.sharma@niit.com
+    </marquee>
+<app-search-yummy (searchTextChanged)="onSearchTextChanged($event)"></app-search-yummy>
+<!-- when search button is clicked call home com via routerlink via para -->
+
+<mat-card *ngFor="let yumm of yummies" class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{yumm.title}}</mat-card-title>
+      <mat-card-subtitle>Delicious Yummies</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="../../assets/images/{{yumm.title}}.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>
+    {{yumm.content}}
+      </p>
+      <p>
+        {{yumm.price}} Rupees
+          </p>
+    </mat-card-content>
+    <mat-card-actions routerLink="/order/{{yumm.id}}">
+           <button mat-button color="warn">ORDER NOW</button>
+    </mat-card-actions>
+  </mat-card>
+  

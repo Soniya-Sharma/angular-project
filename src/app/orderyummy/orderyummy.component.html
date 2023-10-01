@@ -1,0 +1,81 @@
+<p>
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <marquee behavior="sliding" direction="left"><span>Enjoy Free Delivery</span></marquee>
+            
+        </mat-toolbar-row>
+    </mat-toolbar>
+</p>
+<div class="logo">
+    <br>
+  <h2 style="display: inline-block;">  Your Yummy Is Just One Click Away </h2>
+  <div class="Yummydata">
+    <h2 > {{yummydetails.title}}</h2>
+    <img  src="../../assets/images/{{yummydetails.title}}.jpg" alt="">
+    <h1>  {{yummydetails.price}} Rupees</h1>
+  </div>
+</div>
+<br>
+<div style="margin-left: 30px;">
+    <form class="form" (ngSubmit)="onSubmit()" [formGroup]="orderForm">
+       
+        <fieldset class="backcolor">
+            <mat-form-field appearance="fill">
+                <input matInput placeholder="First Name" type="text" id="firstName" formControlName="firstName" />
+                <mat-error *ngIf="firstName?.errors?.['required']">
+                    First Name is required.
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+                <input matInput placeholder="Last Name" type="text" id="lastName" formControlName="lastName" />
+                <mat-error *ngIf="lastName?.errors?.['required']">
+                    Last Name is required.
+                </mat-error>
+                <mat-error *ngIf="lastName?.errors?.['minlength']">
+                    Last Name should have minimum of 2 characters.
+                </mat-error>
+            </mat-form-field>
+<br>
+            <mat-form-field appearance="fill">
+                <mat-label>Delivery Date</mat-label>
+                <input matInput [min]="maxDate" required [matDatepicker]="picker" formControlName="orderdate">
+                <mat-error *ngIf="orderdate?.invalid && (orderdate?.dirty || orderdate?.touched)">
+                    Date of Order is required in the format MM/DD/YYYY
+                </mat-error>
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+<br>
+           <mat-form-field appearance="fill">
+                <input matInput type="text" placeholder="Phone Number" id="phone" formControlName="phone"> 
+                <mat-error *ngIf="phone?.errors?.['pattern']">
+                    Valid phone number contains 10 digits starting with 7/8/9
+                </mat-error>
+            </mat-form-field>
+            <div formGroupName="address">
+                <h4>Address</h4>
+                <mat-form-field appearance="fill">
+                    <input matInput type="text" placeholder="Street" id="street" formControlName="street">
+                </mat-form-field>
+&nbsp;
+                <mat-form-field appearance="fill">
+                    <input matInput type="text" placeholder="City" id="city" formControlName="city">
+                </mat-form-field>&nbsp;<br> 
+                <mat-form-field appearance="fill">
+                    <input matInput type="text" placeholder="State" id="state" formControlName="state">
+                </mat-form-field>&nbsp;
+                <mat-form-field appearance="fill">
+                    <input matInput type="text" placeholder="Zip" id="zip" formControlName="zip">
+                </mat-form-field>
+
+            </div>
+            <br>
+            <h1> Total Bill: {{yummydetails.price}}</h1>
+            <button color="accent" mat-button mat-raised-button type="reset">Reset</button>&nbsp;
+            <button color="primary" mat-button mat-raised-button [disabled]="!orderForm.valid"
+                type="submit">Submit</button>
+        </fieldset>
+    </form>
+</div>

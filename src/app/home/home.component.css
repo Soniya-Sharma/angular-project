@@ -1,0 +1,17 @@
+.headone{
+    margin-left: 500px;
+}
+img{
+    width: 200px;
+    height: 200px;
+    margin-left: 50px;
+}
+.example-card{
+    width: 350px;
+    height: 450px;
+    margin: 20px;
+    display: inline-block;
+}
+img:hover{
+    transform: scale(1.5);
+    }
